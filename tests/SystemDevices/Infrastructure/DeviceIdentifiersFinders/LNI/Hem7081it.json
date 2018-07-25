@@ -1,0 +1,148 @@
+{
+  "messageHeader": {
+    "dateTime": "20151022173207+0200"
+  },
+  "authentication": {
+    "method": "NONE",
+    "result": "PASS: 0"
+  },
+  "patient": {
+    "idUnknown": false,
+    "idNumber": "1",
+    "assigningAuthorityId": "1",
+    "assigningAuthorityIdType": "L",
+    "firstName": "EMN",
+    "lastName": "Patient"
+  },
+  "observationRequests": [
+    {
+      "ahd": {
+        "systemId": {
+          "entityIdentifier": "ecde3d0000173b20",
+          "universalId": "ecde3d0000173b20",
+          "universalIdType": "EUI-64"
+        },
+        "timeSyncProtocol": {
+          "name": "MDC_TIME_SYNC_NTPV4",
+          "code": 532226
+        }
+      },
+      "device": {
+        "manufacturer": "OMRON HEALTHCARE",
+        "modelNumber": "HEM-7081-IT",
+        "serialNumber": "Invalid entry by Agent",
+        "firmwareVersion": "FW_REVISION: 101",
+        "timeSyncProtocol": {
+          "name": "MDC_TIME_SYNC_NONE",
+          "code": 532224
+        },
+        "specializations": [
+          {
+            "name": "MDC_DEV_SPEC_PROFILE_BP",
+            "code": 528391
+          }
+        ],
+        "systemIds": [
+          {
+            "entityIdentifier": "002209225838925b",
+            "universalId": "002209225838925b",
+            "universalIdType": "EUI-64"
+          },
+          {
+            "entityIdentifier": "00:22:58:38:92:5B",
+            "namespaceId": "Bluetooth SIG",
+            "universalId": "00:22:58:38:92:5B",
+            "universalIdType": "BT-MAC"
+          }
+        ]
+      },
+      "observations": [
+        {
+          "observationId": {
+            "name": "MDC_PRESS_BLD_NONINV",
+            "code": 150020
+          },
+          "observationSubId": "1.0.1",
+          "dateTime": "20151022173150.000+0200",
+          "resultStatus": "X",
+          "children": [
+            {
+              "dataType": "Number",
+              "observationId": {
+                "name": "MDC_PRESS_BLD_NONINV_SYS",
+                "code": 150021
+              },
+              "observationSubId": "1.0.1.1",
+              "value": "138",
+              "units": {
+                "name": "MDC_DIM_MMHG",
+                "code": 266016
+              },
+              "dateTime": "20151022173150.000+0200",
+              "resultStatus": "R"
+            },
+            {
+              "dataType": "Number",
+              "observationId": {
+                "name": "MDC_PRESS_BLD_NONINV_DIA",
+                "code": 150022
+              },
+              "observationSubId": "1.0.1.2",
+              "value": "73",
+              "units": {
+                "name": "MDC_DIM_MMHG",
+                "code": 266016
+              },
+              "dateTime": "20151022173150.000+0200",
+              "resultStatus": "R"
+            },
+            {
+              "dataType": "Number",
+              "observationId": {
+                "name": "MDC_PRESS_BLD_NONINV_MEAN",
+                "code": 150023
+              },
+              "observationSubId": "1.0.1.3",
+              "value": "94",
+              "units": {
+                "name": "MDC_DIM_MMHG",
+                "code": 266016
+              },
+              "dateTime": "20151022173150.000+0200",
+              "resultStatus": "R"
+            }
+          ]
+        },
+        {
+          "dataType": "Number",
+          "observationId": {
+            "name": "MDC_PULS_RATE_NON_INV",
+            "code": 149546
+          },
+          "observationSubId": "1.0.0.11",
+          "value": "65",
+          "units": {
+            "name": "MDC_DIM_BEAT_PER_MIN",
+            "code": 264864
+          },
+          "dateTime": "20151022173150.000+0200",
+          "resultStatus": "R"
+        },
+        {
+          "dataType": "Number",
+          "observationId": {
+            "code": 192530
+          },
+          "observationSubId": "1.0.0.12",
+          "value": "0",
+          "units": {
+            "name": "MDC_DIM_DIMLESS",
+            "code": 262656
+          },
+          "dateTime": "20151022173150.000+0200",
+          "resultStatus": "R"
+        }
+      ]
+    }
+  ]
+}
