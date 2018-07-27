@@ -116,7 +116,7 @@ class InMemoryDeviceIdentifierRepositoryTest extends TestCase
              ->willReturn($SN); 
         $repositoryInMemory = new InMemoryDeviceIdentifierRepository();
         $repositoryInMemory->add($deviceIdentifierToRegisterSN);
-        $repositoryInMemory->remove($deviceIdentifierToRegisterSN);
+        $repositoryInMemory->remove($id);
         
         $repository = new \ReflectionObject($this->repository);
         $devices = $repository->getProperty('deviceIdentifiers');

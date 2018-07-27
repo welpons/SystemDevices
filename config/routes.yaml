@@ -1,3 +1,5 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+devive_identifier_add:
+    path: /device/identifier/add
+    controller: App\Controller\AdminDeviceIdentifiersController::addIdentifier
+    methods:    [POST]
+ 

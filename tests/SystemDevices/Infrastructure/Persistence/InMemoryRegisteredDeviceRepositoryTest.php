@@ -38,7 +38,7 @@ class InMemoryRegisteredDeviceRepositoryTest extends TestCase
     {
         $idFoo = DeviceId::create();
         $deviceToRegisterFoo = $this->createMock(RegisteredDevice::class);
-        $deviceToRegisterFoo->method('id')
+        $deviceToRegisterFoo->method('deviceId')
              ->willReturn($idFoo);
         $this->assertNull($this->repository->deviceOfId($idFoo));
         
@@ -51,12 +51,12 @@ class InMemoryRegisteredDeviceRepositoryTest extends TestCase
     {
         $id = DeviceId::create('foo');
         $deviceToRegister = $this->createMock(RegisteredDevice::class);
-        $deviceToRegister->method('id')
+        $deviceToRegister->method('deviceId')
              ->willReturn($id);
         $this->repository->add($deviceToRegister);
         $registeredDevice = $this->repository->deviceOfId($id);
         $this->assertTrue($registeredDevice instanceof RegisteredDevice);
-        $this->assertEquals('foo', $registeredDevice->id());
+        $this->assertEquals('foo', $registeredDevice->deviceId());
     }     
     
     /**
@@ -66,11 +66,11 @@ class InMemoryRegisteredDeviceRepositoryTest extends TestCase
     {
         $idFoo = DeviceId::create('foo');
         $deviceToRegisterFoo = $this->createMock(RegisteredDevice::class);
-        $deviceToRegisterFoo->method('id')
+        $deviceToRegisterFoo->method('deviceId')
              ->willReturn($idFoo);
         $idBar = DeviceId::create('bar');
         $deviceToRegisterBar = $this->createMock(RegisteredDevice::class);
-        $deviceToRegisterBar->method('id')
+        $deviceToRegisterBar->method('deviceId')
              ->willReturn($idBar);        
         $this->repository->add($deviceToRegisterFoo);
         $this->repository->add($deviceToRegisterBar);
@@ -89,7 +89,7 @@ class InMemoryRegisteredDeviceRepositoryTest extends TestCase
     {
         $idFoo = DeviceId::create('foo');
         $registeredDevice = $this->createMock(RegisteredDevice::class);
-        $registeredDevice->method('id')
+        $registeredDevice->method('deviceId')
              ->willReturn($idFoo);
         $repositoryInMemory = new InMemoryRegisteredDeviceRepository();
         $repositoryInMemory->add($registeredDevice);

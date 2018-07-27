@@ -18,14 +18,10 @@ interface DeviceIdentifierRepositoryInterface
     public function deviceOfId(DeviceIdentifierId $id) : ?DeviceIdentifier;
     
     public function deviceOfDeviceId(DeviceId $deviceId) : array;
-        
-    public function deviceOfIdentifier(Identifier $identifier) : ?DeviceIdentifier;
    
     public function add(DeviceIdentifier $deviceIdentifier); 
     
     public function update(DeviceIdentifier $deviceIdentifier); 
     
-    public function remove(DeviceIdentifier $deviceIdentifier);
-    
-    public function findBy(array $criteria); 
+    public function remove(DeviceIdentifierId $id);
 }

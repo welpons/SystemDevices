@@ -81,10 +81,10 @@ class RedisDeviceIdentifierRepository implements DeviceIdentifierRepositoryInter
         }    
     }      
     
-    public function remove(DeviceIdentifier $deviceIdentifier)
+    public function remove(DeviceIdentifierId $deviceIdentifier)
     {
-        $this->client->del($deviceIdentifier->deviceId()->id());
-        $this->client->del($deviceIdentifier->identifier()->value());        
+        $this->client->del($deviceIdentifier->id()->id());
+       
     }        
     
     public function findBy(array $criteria)

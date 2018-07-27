@@ -31,7 +31,7 @@ class InMemoryRegisteredDeviceRepository implements RegisteredDeviceRespositoryI
    
     public function add(RegisteredDevice $device)
     {
-        $this->devices[$device->id()->id()] = $device;
+        $this->devices[$device->deviceId()->id()] = $device;
     }
     
     public function update(RegisteredDevice $device)
@@ -43,7 +43,7 @@ class InMemoryRegisteredDeviceRepository implements RegisteredDeviceRespositoryI
     
     public function remove(RegisteredDevice $device)
     {
-        unset($this->devices[$device->id()->id()]);
+        unset($this->devices[$device->deviceId()->id()]);
     }        
     
     public function findBy(array $criteria)

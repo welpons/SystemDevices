@@ -38,15 +38,15 @@ class RegisteredDevice implements DeviceStatusInterface
     
     /**
      * 
-     * @param App\SystemDevices\Domain\Model\Device\DeviceId                  $id
+     * @param App\SystemDevices\Domain\Model\Device\DeviceId                  $deviceId
      * @param App\SystemDevices\Domain\Model\Device\Model\ModelId             $modelId
-     * @param \DateTime                                                             $registeredAt
+     * @param \DateTime                                                       $registeredAt
      * @param App\SystemDevices\Domain\Model\Device\Subscription\Subscription $subscription
      */
-    public function __construct(DeviceId $id, Model\ModelId $modelId, \DateTimeInterface $registeredAt, Subscription\Subscription $subscription = null)
+    public function __construct(DeviceId $deviceId, Model\ModelId $modelId, \DateTimeInterface $registeredAt, Subscription\Subscription $subscription = null)
     {
         $this->identifiers = new Identifiers\Identifiers();
-        $this->id = $id;
+        $this->deviceId = $deviceId;
         $this->modelId = $modelId;
         $this->registeredAt = $registeredAt;
         $this->subscription = $subscription;

@@ -14,15 +14,15 @@ trait DeviceIdentityTrait
     /**
      * @var App\SystemDevices\Domain\Model\Device\DeviceId 
      */
-    private $id;
+    private $deviceId;
     
-    public function id(): DeviceId
+    public function deviceId(): DeviceId
     {
-        return $this->id;
+        return $this->deviceId;
     }
 
     public function __toString()
     {
-        return $this->id->id();
+        return $this->deviceId->id();
     }    
 }

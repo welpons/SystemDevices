@@ -47,24 +47,7 @@ class InMemoryDeviceIdentifierRepository implements DeviceIdentifierRepositoryIn
         
         return $deviceIdentifiers;
     }    
-        
-    public function deviceOfIdentifier(Identifier $identifier) : ?DeviceIdentifier
-    {
-        if (empty($this->deviceIdentifiers)) {
-            return null;
-        }
-        
-        $deviceIdentifiers = [];
-        
-        foreach($this->deviceIdentifiers as $id => $storedDeviceIdentifier) {
-            if ($storedDeviceIdentifier->identifier()->type() == $identifier->type() && $storedDeviceIdentifier->identifier()->value() == $identifier->value()) {
-                return $this->deviceIdentifiers[$id];
-            }
-        }  
-        
-        return null;
-    }    
-   
+     
     public function add(DeviceIdentifier $deviceIdentifier)
     {
         foreach($this->deviceIdentifiers as $id => $storedDeviceIdentifier) {
@@ -84,9 +67,9 @@ class InMemoryDeviceIdentifierRepository implements DeviceIdentifierRepositoryIn
         
     }        
     
-    public function remove(DeviceIdentifier $deviceIdentifier)
+    public function remove(DeviceIdentifierId $id)
     {
-        unset($this->deviceIdentifiers[$deviceIdentifier->id()->id()]);
+        unset($this->deviceIdentifiers[$id->id()]);
     }        
     
     public function findBy(array $criteria)
