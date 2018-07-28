@@ -7,7 +7,7 @@ namespace App\SystemDevices\Infrastructure\Projection;
  *
  * @author felix
  */
-class Projector 
+class Projector implements ProjectorInterface 
 {
     private $projections = [];
     

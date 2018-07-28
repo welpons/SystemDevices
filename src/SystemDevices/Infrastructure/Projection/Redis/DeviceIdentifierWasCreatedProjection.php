@@ -3,6 +3,7 @@
 namespace App\SystemDevices\Infrastructure\Projection\Redis;
 
 use App\SystemDevices\Infrastructure\Projection\ProjectionInterface;
+use App\SystemDevices\Infrastructure\Projection\ProjectorInterface;
 use App\SystemDevices\Domain\Model\Device\DeviceIdentifierWasCreated;
 use Predis\ClientInterface;
 
@@ -11,7 +12,7 @@ use Predis\ClientInterface;
  *
  * @author felix
  */
-class DeviceIdentifierWasCreatedProjection implements ProjectionInterface
+class DeviceIdentifierWasCreatedProjection implements ProjectionInterface, ProjectorInterface
 {
     private $client;
     
@@ -25,7 +26,7 @@ class DeviceIdentifierWasCreatedProjection implements ProjectionInterface
         return DeviceIdentifierWasCreated::class;
     }
 
-    public function project($event) 
+    public function project(array $events) 
     {
          $this->client->hmset($event->deviceIdentifier()->deviceId()->id(), $this->normalizeWithIndexDeviceId($event));
          $this->client->hmset($event->deviceIdentifier()->identifier()->value(), $this->normalizeWithIndexValue($event)); 

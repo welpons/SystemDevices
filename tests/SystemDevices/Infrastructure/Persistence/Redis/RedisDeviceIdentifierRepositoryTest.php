@@ -43,15 +43,15 @@ class RedisDeviceIdentifierRepositoryTest extends TestCase
      */
     public function testAddDeviceIdentifier()
     {
-        $deviceId = DeviceId::create();
-        $hash = $deviceId->id();        
+
+        $hash = uniqid();        
         $this->client->del($hash);
         $this->client->del('SN1234');
         $repository = new RedisDeviceIdentifierRepository($this->client);
-        $deviceIdentifier = new DeviceIdentifier(DeviceIdentifierId::create(), $deviceId, Identifier::fromString('SN1234', 'serial_number'));
+        $deviceIdentifier = DeviceIdentifier::addNew($hash, 'serial_number', 'SN1234');
         $repository->add($deviceIdentifier);
         $indexValue = $this->client->hgetall('SN1234');
-        $this->assertTrue(is_array($indexValue));
+        $this->assertTrue(is_array($indexValue));        
         $this->assertEquals($hash, $indexValue['device_id']);
         $indexDeviceId = $this->client->hgetall($hash);
         $this->assertTrue(is_array($indexDeviceId));

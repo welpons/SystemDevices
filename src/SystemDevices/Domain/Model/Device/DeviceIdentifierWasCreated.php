@@ -9,7 +9,6 @@
 namespace App\SystemDevices\Domain\Model\Device;
 
 use App\SystemDevices\Domain\Shared\DomainEvent;
-use App\SystemDevices\Domain\Model\Device\DeviceIdentifier;
 
 /**
  * Description of DeviceIdentifierWasCreated
@@ -18,23 +17,72 @@ use App\SystemDevices\Domain\Model\Device\DeviceIdentifier;
  */
 class DeviceIdentifierWasCreated implements DomainEvent
 {
-    private $deviceIdentifier;
+    /**
+     * @var string
+     */
+    private $deviceId; 
     
-    public function __construct(DeviceIdentifier $deviceIdentifier) 
+    /**
+     * @var string 
+     */
+    private $type;
+    
+    /**
+     * @var string 
+     */    
+    private $value;
+    
+    /**
+     * @var bool 
+     */    
+    private $isReference;
+    
+    /**
+     * @var \DateTimeImmutable 
+     */    
+    private $ocurredOn;
+    
+    public function __construct(string $deviceId, string $type, string $value, bool $isReferenceIdentifier = false) 
     {
-        $this->deviceIdentifier = $deviceIdentifier;
+        $this->deviceId = $deviceId;
+        $this->type = $type;
+        $this->value = $value;
+        $this->isReference = $isReferenceIdentifier;
+        $this->ocurredOn = new \DateTimeImmutable();
     }
-    
-    
+        
     public function ocurredOn(): \DateTimeImmutable 
     {
-        return new \DateTimeImmutable();
+        return $this->ocurredOn;
     }
-
-    public function deviceIdentifier()
+    
+    public function getTypeName() : string
     {
-        return $this->deviceIdentifier;
+        return 'DeviceIdentifierWasCreated';
+    }        
+
+    public function getOcurredOn() : string
+    {
+        return $this->ocurredOn->getTimestamp();
+    }        
+    
+    public function getDeviceId() : string
+    {
+        return $this->deviceId;
+    }        
+    
+    public function getType() : string
+    {
+        return $this->type;
     }     
     
-       
+    public function getValue() : string
+    {
+        return $this->value;
+    }        
+ 
+    public function isReferenceIdentifier() : bool
+    {
+        return $this->isReference;
+    }        
 }

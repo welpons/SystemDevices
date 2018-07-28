@@ -9,4 +9,5 @@ namespace App\SystemDevices\Domain\Shared;
 interface DomainEvent 
 {
     public function ocurredOn() : \DateTimeImmutable;
+    public function getTypeName() : string;
 }

@@ -7,7 +7,7 @@ use App\SystemDevices\Domain\Model\Device\DeviceIdentifierId;
 use App\SystemDevices\Domain\Model\Device\DeviceId;
 use App\SystemDevices\Domain\Model\Device\DeviceIdentifier;
 use App\SystemDevices\Domain\Model\Device\Identifiers\Identifier;
-use App\SystemDevices\Infrastructure\Projection\ProjectionInterface;
+use App\SystemDevices\Infrastructure\Projection\ProjectorInterface;
 
 /**
  * Description of PDODeviceIdentifierRepository
@@ -19,12 +19,12 @@ class PDODeviceIdentifierRepository implements DeviceIdentifierRepositoryInterfa
     /**
      * @var PDO
      */
-    private $client;
+    private $pdo;
     private $projector;
 
-    public function __construct(Client $client, ProjectionInterface $projector)
+    public function __construct(Client $pdo, ProjectorInterface $projector)
     {
-        $this->client = $client;
+        $this->pdo = $pdo;
         $this->projector = $projector;
     }
     

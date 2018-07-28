@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 class RegisteredDeviceTest extends TestCase
 {
     /**
-     * @group domain_model_device
+     * @group domain_model_rgiestered_device
      */
     public function testInstantiate()
     {

@@ -12,15 +12,17 @@ use Symfony\Component\Serializer\SerializerInterface;
  *
  * @author felix
  */
-class AsyncProjector 
+class AsyncProjector implements ProjectorInterface
 {
     private $producer;
     private $serializer;
+    private $routingKey;
 
-    public function __construct(MessageBrokerInterface $producer, SerializerInterface $serializer) 
+    public function __construct(MessageBrokerInterface $producer, SerializerInterface $serializer, string $routingKey = '') 
     {
         $this->producer = $producer;
         $this->serializer = $serializer;
+        $this->routingKey = $routingKey;
     }
 
     public function project(array $events) 
@@ -29,7 +31,7 @@ class AsyncProjector
             $this->producer->publish(
                     $this->serializer->serialize(
                             $event, 'json'
-                    )
+                    ), '', $this->routingKey
             );
         }
     }

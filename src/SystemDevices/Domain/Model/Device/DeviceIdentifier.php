@@ -24,18 +24,18 @@ class DeviceIdentifier extends AggregateRoot
     public static function addNew(string $deviceId, string $type, string $value, bool $isReferenceIdentifier = false)
     {
         $id = DeviceIdentifierId::create();
-        $deviceId = DeviceId::create($deviceId);
+        $deviceIdObj = DeviceId::create($deviceId);
         $identifier = Identifier::fromString($value, $type);
-        $deviceIdentifier = new static($id, $deviceId, $identifier, $isReferenceIdentifier);
+        $deviceIdentifier = new DeviceIdentifier($id, $deviceIdObj, $identifier, $isReferenceIdentifier);
         
         $deviceIdentifier->recordApplyAndPublishThat(
-            new DeviceIdentifierWasCreated($deviceIdentifier)
+            new DeviceIdentifierWasCreated($deviceId, $type, $value, $isReferenceIdentifier)
         );
         
         return $deviceIdentifier;
     }    
     
-    public function __construct(DeviceIdentifierId $id, DeviceId $deviceId, Identifier $identifier, bool $isReferenceIdentifier = false) 
+    private function __construct(DeviceIdentifierId $id, DeviceId $deviceId, Identifier $identifier, bool $isReferenceIdentifier = false) 
     {
         $this->id = $id;
         $this->deviceId = $deviceId;
