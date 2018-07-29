@@ -41,12 +41,12 @@ class InMemoryRegisteredDeviceRepository implements RegisteredDeviceRespositoryI
         }        
     }        
     
-    public function remove(RegisteredDevice $device)
+    public function remove(DeviceId $deviceId)
     {
-        unset($this->devices[$device->deviceId()->id()]);
+        unset($this->devices[$deviceId->id()]);
     }        
     
-    public function findBy(array $criteria)
+    public function findBy(array $criteria) : array
     {
         
     }        

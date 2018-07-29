@@ -25,10 +25,10 @@ class AsyncProjectorTest extends KernelTestCase
         parent::setUp();
         self::bootKernel();
 
-$encoders = array(new XmlEncoder(), new JsonEncoder());
-$normalizers = array(new ObjectNormalizer());
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
 
-$this->serializer = new Serializer($normalizers, $encoders);   
+        $this->serializer = new Serializer($normalizers, $encoders);   
     }
     
     /**

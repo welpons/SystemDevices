@@ -93,7 +93,7 @@ class InMemoryRegisteredDeviceRepositoryTest extends TestCase
              ->willReturn($idFoo);
         $repositoryInMemory = new InMemoryRegisteredDeviceRepository();
         $repositoryInMemory->add($registeredDevice);
-        $repositoryInMemory->remove($registeredDevice);
+        $repositoryInMemory->remove($idFoo);
         
         $repository = new \ReflectionObject($this->repository);
         $devices = $repository->getProperty('devices');

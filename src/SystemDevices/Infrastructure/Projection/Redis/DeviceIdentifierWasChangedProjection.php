@@ -3,7 +3,6 @@
 namespace App\SystemDevices\Infrastructure\Projection\Redis;
 
 use App\SystemDevices\Infrastructure\Projection\ProjectionInterface;
-use App\SystemDevices\Infrastructure\Projection\ProjectorInterface;
 use Predis\ClientInterface;
 
 /**
@@ -11,25 +10,17 @@ use Predis\ClientInterface;
  *
  * @author felix
  */
-class DeviceIdentifierWasChangedProjection implements ProjectionInterface, ProjectorInterface
+class DeviceIdentifierWasChangedProjection extends DeviceIdentifierProjection implements ProjectionInterface
 {
-    private $client;
-    
-    public function __construct(ClientInterface $client) 
-    {
-        $this->client = $client;
-    }
-
     public function listenTo(): string 
     {
         // return DeviceIdentifierWasChanged::class;
     }
 
-    public function project(array $events) 
+    public function project(\stdClass $event) 
     {
-        // $this->client->hmset($deviceIdentifier->deviceId()->id(), $this->normalizeWithIndexDeviceId($deviceIdentifier));
-        // $this->client->hmset($deviceIdentifier->identifier()->value(), $this->normalizeWithIndexValue($deviceIdentifier)); 
-        
+         $this->client->hmset($event->device_id, $this->normalizeWithIndexDeviceId($event));
+         $this->client->hmset($event->value, $this->normalizeWithIndexValue($event));    
     } 
 
 }

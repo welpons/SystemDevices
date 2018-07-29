@@ -11,4 +11,5 @@ namespace App\SystemDevices\Infrastructure\Projection;
 interface ProjectionInterface 
 {
     public function listenTo(): string;
+    public function project(\stdClass $event);
 }
