@@ -16,13 +16,13 @@ class AsyncProjector implements ProjectorInterface
 {
     private $producer;
     private $serializer;
-    private $routingKey;
+    private $queue;
 
-    public function __construct(MessageBrokerInterface $producer, SerializerInterface $serializer, string $routingKey = '') 
+    public function __construct(MessageBrokerInterface $producer, SerializerInterface $serializer) 
     {
         $this->producer = $producer;
         $this->serializer = $serializer;
-        $this->routingKey = $routingKey;
+        $this->queue = '';
     }
 
     public function project(array $events) 
@@ -31,9 +31,13 @@ class AsyncProjector implements ProjectorInterface
             $this->producer->publish(
                     $this->serializer->serialize(
                             $event, 'json'
-                    ), '', $this->routingKey
+                    ), '', $this->queue
             );
         }
     }
 
+    public function setQueue(string $queue)
+    {
+        $this->queue = $queue;
+    }        
 }

@@ -28,3 +28,25 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+        
+    App\SystemDevices\Infrastructure\Middleware\MessageBroker\RabbitMQ:
+        arguments:
+            $host: '%env(QM_CONN_HOST)%'
+            $port: '%env(QM_CONN_PORT)%'
+            $user: '%env(QM_CONN_USER)%'
+            $pass: '%env(QM_CONN_PASS)%'   
+            
+    App\SystemDevices\Infrastructure\Projection\AsyncProjector:
+        arguments: 
+            $producer: '@App\SystemDevices\Infrastructure\Middleware\MessageBroker\RabbitMQ'
+            $serializer: '@serializer'
+        
+    App\SystemDevices\Infrastructure\Persistence\PDO\PDOConnectionSettings:
+        arguments:
+            $dsn: '%env(PDO_CONN_DSN)%'
+            $username: '%env(PDO_CONN_USER)%'  
+            $password: '%env(PDO_CONN_PASS)%'
+            
+    App\SystemDevices\Infrastructure\Persistence\PDO\Client:
+        arguments:
+            $ConnectionSettings: '@App\SystemDevices\Infrastructure\Persistence\PDO\PDOConnectionSettings'
